@@ -23,10 +23,6 @@ public class BookService {
     }
 
     public void show_book(Book book) {
-        /*System.out.println("ISBN: " + book.getIsbn());
-        System.out.println("Título: " + book.getIsbn());
-        System.out.println("Autor: " + book.getIsbn());
-        System.out.println("Páginas: " + book.getIsbn());*/
         System.out.println(book.toString());
     }
 
