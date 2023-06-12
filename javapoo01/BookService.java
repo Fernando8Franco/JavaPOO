@@ -6,23 +6,20 @@ public class BookService {
     private Scanner sc = new Scanner(System.in).useDelimiter("\n");
 
     public Book make_book() {
-        String isbn, title, autor;
-        int pages;
-        Book book = new Book();
 
         System.out.println("Ingrese el ISBN del libro: ");
-        isbn = sc.next();
+        String isbn = sc.next();
 
         System.out.println("Ingrese el título del libro: ");
-        title = sc.next();
+        String title = sc.next();
 
         System.out.println("Ingrese el autor del libro: ");
-        autor = sc.next();
+        String autor = sc.next();
 
         System.out.println("Ingrese las páginas del libro: ");
-        pages = sc.nextInt();
+        int pages = sc.nextInt();
 
-        return book = new Book(isbn, title, autor, pages);
+        return new Book(isbn, title, autor, pages);
     }
 
     public void show_book(Book book) {
