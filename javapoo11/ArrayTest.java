@@ -20,8 +20,7 @@ public class ArrayTest {
         System.out.println("Ordenando arrelo");
         Arrays.sort(numbersA, 0, 10);
 
-        for (int i = 0; i < 10; i++)
-            numbersB[i] = numbersA[i];
+        System.arraycopy(numbersA, 0, numbersB, 0, 10);
 
         Arrays.fill(numbersB, 10, 20, 0.5f);
 
