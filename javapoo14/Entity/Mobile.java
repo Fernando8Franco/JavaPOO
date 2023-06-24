@@ -9,7 +9,8 @@ public class Mobile {
     private short memRam;
     private short storage;
     private int[] code;
-    private static final int codeLenght = 7;
+
+    public static final int MAX_NUMBER_SIZE = 7;
 
     public Mobile(String brand, double price, String model, short memRam, short storage, int[] code) {
         this.brand = brand;
@@ -17,7 +18,7 @@ public class Mobile {
         this.model = model;
         this.memRam = memRam;
         this.storage = storage;
-        this.code = Arrays.copyOf(code, codeLenght);
+        this.code = code;
     }
 
     public String getBrand() {
@@ -66,10 +67,6 @@ public class Mobile {
 
     public void setCode(int[] code) {
         this.code = code;
-    }
-
-    public static int getCodeLenght() {
-        return codeLenght;
     }
 
     @Override

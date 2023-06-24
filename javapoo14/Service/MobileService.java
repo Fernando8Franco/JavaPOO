@@ -1,10 +1,12 @@
 package javapoo14.Service;
 
 import javapoo14.Entity.Mobile;
+
 import java.util.Scanner;
+import java.util.stream.Stream;
 
 public class MobileService {
-    private static Scanner sc = new Scanner(System.in).useDelimiter("\n");
+    private static final Scanner sc = new Scanner(System.in).useDelimiter("\n");
 
     public static Mobile updateMobile() {
 
@@ -27,30 +29,18 @@ public class MobileService {
     }
 
     private static int[] enterCode() {
-        int codeLength = Mobile.getCodeLenght();
-        int[] code = new int[codeLength];
-        int numCode;
-        String numCodeString;
+        String numCode;
 
         while (true) {
-            System.out.println("Ingrese el codigo del celuar (" + codeLength + " dígitos): ");
-            numCode = sc.nextInt();
-            numCodeString = String.valueOf(numCode);
+            System.out.println("Ingrese el codigo del celuar (" + Mobile.MAX_NUMBER_SIZE + " dígitos): ");
+            numCode = sc.next();
 
-            if (numCodeString.length() == codeLength)
+            if (numCode.length() == Mobile.MAX_NUMBER_SIZE)
                 break;
             else
                 System.out.println("El codigo que ingreso no tiene 7 dígitos.");
         }
 
-        for (int i = 0; i < codeLength; i++) {
-            code[i] = Character.getNumericValue(numCodeString.charAt(i));
-        }
-
-        return code;
-    }
-
-    private static void showMobile(Mobile mobile) {
-        System.out.println(mobile);
+        return Stream.of(numCode.split("")).mapToInt(Integer::parseInt).toArray();
     }
 }
