@@ -5,12 +5,12 @@ import java.util.Scanner;
 
 public class HangmanService {
     private static final Scanner sc = new Scanner(System.in).useDelimiter("\n");
-    private static char[] charsEntered;
+    private static String charsEntered;
     private static int cont;
 
 
     public static Hangman createGame() {
-        charsEntered = new char[27];
+        charsEntered = "";
         cont = 0;
 
         System.out.println("Ingrese una palabra: ");
@@ -43,17 +43,24 @@ public class HangmanService {
 
     public static void charactersFound(Hangman hm, char character) {
         boolean flag = true;
-        for (int i = 0; i < hm.getSearchWord().length; i++) {
-            for (int j = 0; j < charsEntered.length; j++) {
-                if (character == charsEntered[i]) {
-                    flag = false;
-                    break;
-                }
-            }
-            if (flag && hm.getSearchWord()[i] == character) {
-                cont++;
+
+        for (int j = 0; j < charsEntered.length(); j++) {
+            if (character == charsEntered.charAt(j)) {
+                flag = false;
+                System.out.println("Mensaje: La letra ya se ingreso.");
+                break;
             }
         }
+
+        if (flag) {
+            for (int i = 0; i < hm.getSearchWord().length; i++) {
+                if (hm.getSearchWord()[i] == character) {
+                    charsEntered = charsEntered.concat(Character.toString(character));
+                    cont++;
+                }
+            }
+        }
+
 
         System.out.println("El número de letras (encontradas, faltantes): (" + cont + "," + (hm.getSearchWord().length - cont ) + ")");
     }
